@@ -1,6 +1,6 @@
 # Homelab VLAN Segmentation
 
-> A four-zone network segmentation design for a home lab — built to isolate IoT, trusted devices, self-hosted services, and a pentest lab from each other, with a single monitored log-shipping flow as the only permitted cross-zone traffic.
+> My home network used to be a flat LAN — everything on the same subnet, every device able to reach every other device. This is the segmentation design I built to fix that.
 
 **Author:** [Chas Carden](https://chascarden.com) · **Guide:** [Read the full writeup](https://chascarden.com/network-segmentation.html)
 
