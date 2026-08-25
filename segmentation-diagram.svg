@@ -1,0 +1,79 @@
+<svg viewBox="0 0 820 560" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
+  <!-- ============ STYLE SYSTEM (reuse across the series) ============
+       Trusted/Main : blue    #2563eb / fill #eff6ff
+       Services     : teal    #0d9488 / fill #f0fdfa
+       Storage      : amber   #d97706 / fill #fffbeb
+       Danger/Lab   : red     #dc2626 / fill #fef2f2  (heavier 3px border = isolated)
+       Allowed flow : green   #16a34a  solid, 2.5px
+       Monitored    : orange  #ea580c  dashed, the ONE permitted Lab flow
+       Text         : slate   #0f172a heading / #475569 body
+  ================================================================== -->
+
+  <rect x="0" y="0" width="820" height="560" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="40" y="46" font-size="26" font-weight="700" fill="#0f172a">Home network segmentation</text>
+  <text x="40" y="72" font-size="15" fill="#475569">One physical network, four isolated zones. Doors are locked by default.</text>
+
+  <!-- ================= ZONE BOXES ================= -->
+
+  <!-- MAIN (trusted) top-left -->
+  <rect x="60" y="120" width="270" height="120" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text x="80" y="150" font-size="18" font-weight="700" fill="#2563eb">Main</text>
+  <text x="80" y="150" font-size="12" font-weight="600" fill="#2563eb" text-anchor="start"><tspan x="235" y="150">TRUSTED</tspan></text>
+  <text x="80" y="178" font-size="14" fill="#475569">Laptop · phone</text>
+  <text x="80" y="200" font-size="14" fill="#475569">Your patched daily devices</text>
+
+  <!-- SERVICES top-right (contains Wazuh) -->
+  <rect x="490" y="120" width="270" height="120" rx="14" fill="#f0fdfa" stroke="#0d9488" stroke-width="2"/>
+  <text x="510" y="150" font-size="18" font-weight="700" fill="#0d9488">Services</text>
+  <text x="510" y="178" font-size="14" fill="#475569">Reverse proxy · dashboards</text>
+  <!-- Wazuh sub-box -->
+  <rect x="510" y="192" width="120" height="32" rx="8" fill="#ccfbf1" stroke="#0d9488" stroke-width="1.5"/>
+  <text x="570" y="213" font-size="13" font-weight="700" fill="#0f766e" text-anchor="middle">Wazuh (SIEM)</text>
+
+  <!-- NAS-BACKUP bottom-left -->
+  <rect x="60" y="380" width="270" height="120" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+  <text x="80" y="410" font-size="18" font-weight="700" fill="#d97706">NAS-Backup</text>
+  <text x="80" y="438" font-size="14" fill="#475569">Backups · media storage</text>
+  <text x="80" y="460" font-size="14" fill="#475569">Talks only to what backs up</text>
+
+  <!-- LAB bottom-right (heavier border = isolated) -->
+  <rect x="490" y="380" width="270" height="120" rx="14" fill="#fef2f2" stroke="#dc2626" stroke-width="3"/>
+  <text x="510" y="410" font-size="18" font-weight="700" fill="#dc2626">Lab</text>
+  <text x="510" y="410" font-size="12" font-weight="700" fill="#dc2626"><tspan x="672" y="410">ISOLATED</tspan></text>
+  <text x="510" y="438" font-size="14" fill="#475569">Kali · vulnerable targets</text>
+  <text x="510" y="460" font-size="14" fill="#475569">Sealed in and out</text>
+
+  <!-- ================= ALLOWED FLOWS (green solid) ================= -->
+  <!-- Main <-> Services (top horizontal) -->
+  <line x1="330" y1="170" x2="490" y2="170" stroke="#16a34a" stroke-width="2.5"/>
+  <!-- Main <-> NAS (left vertical) -->
+  <line x1="195" y1="240" x2="195" y2="380" stroke="#16a34a" stroke-width="2.5"/>
+  <!-- Services <-> NAS (diagonal, backups) -->
+  <line x1="490" y1="215" x2="330" y2="420" stroke="#16a34a" stroke-width="2.5"/>
+  <text x="405" y="315" font-size="12" font-weight="600" fill="#16a34a" transform="rotate(-52 405 315)">backups</text>
+
+  <!-- ================= MONITORED FLOW (orange dashed) — the ONE Lab exception ================= -->
+  <!-- Lab -> Wazuh: from top of Lab up to Wazuh box -->
+  <path d="M 600 380 L 600 224" stroke="#ea580c" stroke-width="2.5" stroke-dasharray="7 5" fill="none" marker-end="url(#arrow)"/>
+  <rect x="612" y="292" width="118" height="26" rx="6" fill="#fff7ed" stroke="#ea580c" stroke-width="1.2"/>
+  <text x="671" y="310" font-size="12" font-weight="700" fill="#c2410c" text-anchor="middle">logs only →</text>
+
+  <!-- arrowhead def -->
+  <defs>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#ea580c"/>
+    </marker>
+  </defs>
+
+  <!-- ================= LEGEND ================= -->
+  <line x1="60" y1="528" x2="92" y2="528" stroke="#16a34a" stroke-width="2.5"/>
+  <text x="100" y="532" font-size="13" fill="#475569">Allowed traffic</text>
+
+  <line x1="240" y1="528" x2="272" y2="528" stroke="#ea580c" stroke-width="2.5" stroke-dasharray="7 5"/>
+  <text x="280" y="532" font-size="13" fill="#475569">One monitored flow (logs)</text>
+
+  <rect x="500" y="520" width="16" height="16" rx="3" fill="#fef2f2" stroke="#dc2626" stroke-width="3"/>
+  <text x="524" y="532" font-size="13" fill="#475569">Heavier border = isolated by default</text>
+</svg>
